@@ -1,0 +1,1 @@
+setTag( 'app.currentTime.hour12', getTag('app.currentTime.hour')%12);
