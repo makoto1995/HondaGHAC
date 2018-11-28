@@ -11,6 +11,8 @@ var list = {
 'part_d': 100
 };
 
+setTag('tag1', getTag('tag1')+1);
+
 for (var i in list) {
     var data = getTag(i) || Math.random()*list[i];
 	data = getProcessData( data, list[i]);
