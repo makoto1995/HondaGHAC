@@ -1,0 +1,282 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>IntegraXor Report</title>
+        <link rel="stylesheet" type="text/css" href="system/styles/igrX.css" />
+		<style type="text/css">
+			.reportDiv{
+				position: absolute;
+				top: 480px;
+				left: 2%;
+				right: 2%;
+				width: 1200px;
+				z-index:0;
+			}
+			.plotcontainer{
+				position: absolute;
+				top: 50px;
+				width:46%;
+				height:325px;
+			}
+			.plottitle{
+				position: absolute; 
+				width:40%;
+			}
+			.background-plot{
+				width:100%;
+				height:380px;
+				top:90px;
+				position: absolute;
+				background-color: Lavender;
+				z-index:1;
+			}
+			.background-header{
+				position: absolute;
+				width:100%;
+				background-color: white;
+				z-index:1;
+			}
+			.legend{
+				position: relative;
+				margin-top: -375px;
+				margin-left: 20px;
+			} 
+			#div1{
+				display:inline-block;
+				zoom: 1;
+				*display:inline;
+				vertical-align:top;
+				left:inherit;
+				float:left;
+			}
+			#div2{
+				display:inline-block;
+				zoom: 1;
+				*display:inline;
+				width:900px;
+				overflow-x:scroll;
+				vertical-align:top;
+				left:inherit;
+				float:left;
+			}
+			td, th{
+				height:15px;
+			}
+		</style>
+    </head>
+    <body>
+		<div class='background-header'>
+			<div id="idButtons" class="paragraph"></div>
+			<h1>Power Consumption Summary</h1>
+			<div id="idTimestamp" class="paragraph"></div>
+		</div>
+		<div class="background-plot" style="min-width:800px">
+			<h1 class='plottitle' style='left:5%;'>Percentage</h1>
+			<div class='plotcontainer' data-igrx='{"attr":"cht","type":"pie",
+				"tag":[ "PlantA", "buswayLV", "equipUPS", "genUPS", "PlantB", "DataCenter", "ConnectedLoads", "chillerUnits", "chillerCP", "MAU", "PCW", "CWP", "CWSP", "CTF", "CTMF", "CWPP", "RCU", "AHU", "FFU", "scrubberExhaust", "SRP", "generalExhaust", "solventExhaust", "WWTP", "PWP", "TCM", "TGM", "PVP", "lighting", "boiler", "DWP", "CCTV", "scada"] }' style="left: 2%;"></div>
+			<h1 class='plottitle' style='left:55%;'>Daily Power Consumption</h1>
+			<div class='plotcontainer' data-igrx='{"attr":"cht","type":"bar",
+				"tag":[ "totalConsumption", "PlantA", "buswayLV", "equipUPS", "genUPS", "PlantB", "DataCenter", "ConnectedLoads", "chillerUnits", "chillerCP", "MAU", "PCW", "CWP", "CWSP", "CTF", "CTMF", "CWPP", "RCU", "AHU", "FFU", "scrubberExhaust", "SRP", "generalExhaust", "solventExhaust", "WWTP", "PWP", "TCM", "TGM", "PVP", "lighting", "boiler", "DWP", "CCTV", "scada"] }' style="left: 52%;"></div>
+		</div>
+		<div class='reportDiv'>
+			<table width="60%">
+				<tr>
+					<th style="visibility:hidden;"></th>
+					<th style="visibility:hidden;"></th>
+					<td data-igrx='{"attr":"log","tag":"app.currentTime"}'>Time</td>
+					<td style="visibility:hidden;"></td>
+				</tr>
+				<tr>
+					<th colspan='2'>System/Equipment</th>
+					<td data-igrx='{"attr":"log","tag":"dummyText"}'>xxx</td>
+					<td>Average</td>
+				</tr>
+				<tr>
+					<th colspan='2'>Total Power Consumption</th>
+					<td data-igrx='{"attr":"log","tag":"totalConsumption"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"totalConsumption"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th colspan='2'>Plant A</th>
+					<td data-igrx='{"attr":"log","tag":"PlantA"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"PlantA"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th rowspan="3">IGRX Module Tools</th>
+					<th>Busway LV Switchboards</th>
+					<td data-igrx='{"attr":"log","tag":"buswayLV"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"buswayLV"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th>Equipment UPS</th>
+					<td data-igrx='{"attr":"log","tag":"equipUPS"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"equipUPS"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th>Gen-UPS</th>
+					<td data-igrx='{"attr":"log","tag":"genUPS"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"genUPS"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th colspan='2'>Plant B</th>
+					<td data-igrx='{"attr":"log","tag":"PlantB"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"PlantB"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th colspan='2'>IGRX Datacenter</th>
+					<td data-igrx='{"attr":"log","tag":"DataCenter"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"DataCenter"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th colspan='2'>IGRX Connected Loads ( Static UPS Data Center)</th>
+					<td data-igrx='{"attr":"log","tag":"ConnectedLoads"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"ConnectedLoads"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th rowspan="12">HVAC System</th>
+					<th>Chiller Units</th>
+					<td data-igrx='{"attr":"log","tag":"chillerUnits"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"chillerUnits"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th>Chiller Control Panel</th>
+					<td data-igrx='{"attr":"log","tag":"chillerCP"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"chillerCP"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th>MAU</th>
+					<td data-igrx='{"attr":"log","tag":"MAU"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"MAU"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th>Process Cooling Water</th>
+					<td data-igrx='{"attr":"log","tag":"PCW"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"PCW"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th>Condenser Water Pumps</th>
+					<td data-igrx='{"attr":"log","tag":"CWP"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"CWP"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th>Chilled Water Secondary Pump</th>
+					<td data-igrx='{"attr":"log","tag":"CWSP"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"CWSP"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th>Cooling Tower Fans</th>
+					<td data-igrx='{"attr":"log","tag":"CTF"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"CTF"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th>Cooling Tower Makeup Fans</th>
+					<td data-igrx='{"attr":"log","tag":"CTMF"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"CTMF"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th>Chilled Water Primary Pump</th>
+					<td data-igrx='{"attr":"log","tag":"CWPP"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"CWPP"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th>RCU</th>
+					<td data-igrx='{"attr":"log","tag":"RCU"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"RCU"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th>AHU</th>
+					<td data-igrx='{"attr":"log","tag":"AHU"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"AHU"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th>FFU</th>
+					<td data-igrx='{"attr":"log","tag":"FFU"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"FFU"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th rowspan="4">Exhaust System</th>
+					<th>Scrubber Exhaust</th>
+					<td data-igrx='{"attr":"log","tag":"scrubberExhaust"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"scrubberExhaust"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th>Scrubber Recirculating Pumps</th>
+					<td data-igrx='{"attr":"log","tag":"SRP"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"SRP"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th>General Exhaust</th>
+					<td data-igrx='{"attr":"log","tag":"generalExhaust"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"generalExhaust"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th>Solvent Exhaust</th>
+					<td data-igrx='{"attr":"log","tag":"solventExhaust"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"solventExhaust"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th colspan='2'>WWTP</th>
+					<td data-igrx='{"attr":"log","tag":"WWTP"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"WWTP"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th colspan='2'>Process Water Pump</th>
+					<td data-igrx='{"attr":"log","tag":"PWP"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"PWP"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th rowspan="2">TCM/TGM</th>
+					<th>TCM</th>
+					<td data-igrx='{"attr":"log","tag":"TCM"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"TCM"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th>TGM</th>
+					<td data-igrx='{"attr":"log","tag":"TGM"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"TGM"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th colspan='2'>PVP</th>
+					<td data-igrx='{"attr":"log","tag":"PVP"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"PVP"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th colspan='2'>Lighting/Power</th>
+					<td data-igrx='{"attr":"log","tag":"lighting"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"lighting"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th colspan='2'>Boiler</th>
+					<td data-igrx='{"attr":"log","tag":"boiler"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"boiler"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th colspan='2'>Domestic Water Pump</th>
+					<td data-igrx='{"attr":"log","tag":"DWP"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"DWP"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th colspan='2'>Security/CCTV</th>
+					<td data-igrx='{"attr":"log","tag":"CCTV"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"CCTV"}'>#,###,##0.#0</td>
+				</tr>
+				<tr>
+					<th colspan='2'>IntegraXor Scada/PLC</th>
+					<td data-igrx='{"attr":"log","tag":"scada"}'>#,###,##0.#0</td>
+					<td data-igrx='{"attr":"avg","tag":"scada"}'>#,###,##0.#0</td>
+				</tr>
+			</table>
+		</div>
+		<div style="visibility:hidden; height:100px;"></div>
+    </body>
+
+    <script type="text/javascript" src="system/scripts/igrX.js"></script>
+    <script type="text/javascript">
+    var option = {
+		'horizontal': true
+	};
+
+    var rpt = igrx.report( option );
+    
+    </script>
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+
+<head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="./scripts/bootstrap.min.css" rel="stylesheet">
+    <link href="./dashboard.css" rel="stylesheet">
+</head>
+
+<body style="height: 100%">
+    <div class="container-fluid" style="height: 100%">
+        <div class="row" style="height: 66.6%">
+            <div class="col-3" style="height: 100%">
+                <div id="wire-consuming" class="row bg-dark div-component" style="height: 50%">
+                </div>
+                <div id="realtime-device-status" class="row bg-dark div-component" style="height: 50%">
+                </div>
+            </div>
+            <div id="device-status pre-scrollable" class="col-6 bg-dark div-component" style="height: 100%">
+                <div class="page-header">
+                    <h4 class="text-white m-auto text-center">设备状态
+                    </h4>
+                </div>
+                <table class="table table-striped table-dark mt-2">
+                    <thead>
+                        <tr>
+                            <th scope="col">焊机编号</th>
+                            <th scope="col">所属工位</th>
+                            <th scope="col">状态</th>
+                            <th scope="col">A</th>
+                            <th scope="col">V</th>
+                            <th scope="col">报警代码</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>3118</th>
+                            <td>成都翻转机</td>
+                            <td>焊接</td>
+                            <td>196</td>
+                            <td>20.4</td>
+                            <td>正常</td>
+                        </tr>
+                        <tr>
+                            <th>3103</th>
+                            <td>成都组焊平台1</td>
+                            <td>待机</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>正常</td>
+                        </tr>
+                        <tr>
+                            <th>3111</th>
+                            <td>成都组焊平台1</td>
+                            <td>关机</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>正常</td>
+                        </tr>
+                        <tr>
+                            <th>3114</th>
+                            <td>成都组焊平台1</td>
+                            <td>关机</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>正常</td>
+                        </tr>
+                        <tr>
+                            <th>53102</th>
+                            <td>成都组焊平台1</td>
+                            <td>待机</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>正常</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-3" style="height: 100%">
+                <div id="welding-time-sum" class="row bg-dark div-component" style="height: 50%">
+                </div>
+                <div id="latest-alert" class="row bg-dark div-component" style="height: 50%">
+                    <div class="col-12 pre-scrollable">
+                        <h5 class="text-white m-auto text-center">最新报警信息
+                        </h5>
+                        <dl class="dl-horizontal text-white">
+                            <dt>编号</dt>
+                            <dd>Welder09</dd>
+                            <dt>事件类型</dt>
+                            <dd>报警</dd>
+                            <dt>发生时间</dt>
+                            <dd>2018/11/13 12:05:13</dd>
+                            <dt>详情</dt>
+                            <dd>Err-10</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="height: 33.3%">
+            <div id="working-status" class="col-3 bg-dark div-component" style="height: 100%"></div>
+            <div id="auto-welding-time" class="col-6 bg-dark div-component" style="height: 100%"></div>
+            <div id="weekly-welding-quality" class="col-3 bg-dark div-component" style="height: 100%"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./scripts/jquery.slim.min.js"></script>
+    <script type="text/javascript" src="./scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./scripts/echarts.min.js"></script>
+    <script type="text/javascript">
+        var domWireConsuming = document.getElementById("wire-consuming");
+        var domRealtimeDeviceStatus = document.getElementById("realtime-device-status");
+        var domDeviceStatus = document.getElementById("device-status");
+        var domWeldingTimeSum = document.getElementById("welding-time-sum");
+        var domLatestAlert = document.getElementById("latest-alert");
+        var domWorkingStatus = document.getElementById("working-status");
+        var domAutoWeldingTime = document.getElementById("auto-welding-time");
+        var domWeeklyWeldingQuality = document.getElementById("weekly-welding-quality");
+        var wireConsumingChart = echarts.init(domWireConsuming);
+        var realtimeDeviceStatusChart = echarts.init(domRealtimeDeviceStatus);
+        var weldingTimeSumChart = echarts.init(domWeldingTimeSum);
+        var workingStatusChart = echarts.init(domWorkingStatus);
+        var autoWeldingTimeChart = echarts.init(domAutoWeldingTime);
+        var weeklyWeldingQualityChart = echarts.init(domWeeklyWeldingQuality);
+        var app = {};
+        optionWireConsuming = null;
+        optionRealtimeDeviceStatus = null;
+        optionWeldingTimeSum = null;
+        optionWorkingStatus = null;
+        optionAutoWeldingTime = null;
+        optionWeeklyWeldingQuality = null;
+        optionWireConsuming = {
+            color: ['#FFF'],
+            title: {
+                text: '工位焊丝消耗（当天）',
+                textStyle: {
+                    color: '#FFF'          // 主标题文字颜色
+                },
+                x: 'center',
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                data: ['成都翻转机', '1', '2', '成都组焊平台', '3', '4', '自动焊1', '5', '6'],
+                splitLine: { show: false },//去除网格线
+                axisLine: {
+                    lineStyle: {
+                        type: 'solid',
+                        color: '#fff',//左边线的颜色
+                        width: '2'//坐标线的宽度
+                    }
+                },
+            },
+            yAxis: {
+                type: 'value',
+                name: 'kg',
+                axisLine: {
+                    lineStyle: {
+                        type: 'solid',
+                        color: '#fff',//左边线的颜色
+                        width: '2'//坐标线的宽度
+                    }
+                },
+            },
+            series: [{
+                data: [20.28, 7.97, 6.9, 3.55, 12.94, 60.33, 86.48, 87.95, 60.78],
+                type: 'bar',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'top'
+                    }
+                },
+            }]
+        };
+        optionRealtimeDeviceStatus = {
+            color: ['#F00', '#FB0', '#F0B', '#0BF'],
+            title: {
+                text: '设备实时状态',
+                x: 'center',
+                textStyle: {
+                    color: '#FFF'
+                }
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: ['报警', '待机', '关机', '焊接'],
+                textStyle: {
+                    color: '#FFF'
+                }
+            },
+            series: [
+                {
+                    name: '设备实时状态',
+                    type: 'pie',
+                    radius: '55%',
+                    center: ['50%', '60%'],
+                    data: [
+                        { value: 0, name: '报警' },
+                        { value: 73, name: '待机' },
+                        { value: 10, name: '关机' },
+                        { value: 17, name: '焊接' }
+                    ],
+                    label: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        optionWeldingTimeSum = {
+            color: ['#0F4'],
+            title: {
+                text: '工位实际焊接时间统计（当天）',
+                x: 'center',
+                textStyle: {
+                    color: '#FFF'
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                data: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+
+                axisLine: {
+                    lineStyle: {
+                        type: 'solid',
+                        color: '#fff',//左边线的颜色
+                        width: '2'//坐标线的宽度
+                    }
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#fff',
+
+                    }
+                }
+            },
+            yAxis: {
+                type: 'value',
+                name: 'h',
+                axisLine: {
+                    lineStyle: {
+                        type: 'solid',
+                        color: '#fff',//左边线的颜色
+                        width: '2'//坐标线的宽度
+                    }
+                },
+            },
+            series: [{
+                data: [0.256442914, 0.580303614, 0.803028025, 0.432741997, 1.477036175, 0.673592618, 0.205770117, 1.224051194, 1.181442595, 1.278661225, 1.090559486, 0.80559786, 0.600158258, 0.329677023, 0.030159468, 0.391603009, 1.063214994, 0.745137201, 0.434081973, 0.841289353, 0.333733326, 0.848505977, 1.284532515, 0.163100024, 0.403295319, 0.236407997, 0.431374049, 0.028605493, 0.230274396, 0.038504706, 0.934052362, 1.484608218, 0.268561811, 0.061305429, 0.010894619, 0.622504791,],
+                type: 'bar'
+            }]
+        };
+        optionWorkingStatus = {
+            color: ['#F00', '#FB0', '#F0B', '#0BF'],
+            title: {
+                text: '工位开动率看板',
+                textStyle: {
+                    color: '#FFF'
+                },
+                x: 'center'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['自动焊1', '自动焊2', '自动焊3'],
+                x: 'right',
+                orient: 'vertical',
+                itemGap: 4,
+                textStyle: {
+                    color: '#FFF'
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['11-07', '11-08', '11-09', '11-10', '11-11', '11-12', '11-13'],
+                axisLine: {
+                    lineStyle: {
+                        type: 'solid',
+                        color: '#fff',//左边线的颜色
+                        width: '2'//坐标线的宽度
+                    }
+                },
+            },
+            yAxis: {
+                type: 'value',
+                name: '%',
+                axisLine: {
+                    lineStyle: {
+                        type: 'solid',
+                        color: '#fff',//左边线的颜色
+                        width: '2'//坐标线的宽度
+                    }
+                },
+            },
+            series: [
+                {
+                    name: '自动焊1',
+                    type: 'line',
+                    data: [48.92689211, 97.78401517, 1.420900046, 10.88950953, 20.40810534, 75.41297649, 36.83933608,]
+                },
+                {
+                    name: '自动焊2',
+                    type: 'line',
+                    data: [60.1484415, 31.30951703, 39.90961392, 12.38050457, 82.93044147, 59.6110995, 64.34730357,]
+                },
+                {
+                    name: '自动焊3',
+                    type: 'line',
+                    data: [85.18806373, 56.63471305, 8.021051806, 23.64457862, 98.71627184, 41.71414139, 42.31669372,]
+                },
+            ]
+        };
+        optionAutoWeldingTime = {
+            color: ["#0FF", "#EEE"],
+            title: {
+                text: '自动焊工序工作时间',
+                textStyle: {
+                    color: '#FFF'
+                },
+                x: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            legend: {
+                data: ['焊接', '工作'],
+                x: 'right',
+                textStyle: {
+                    color: '#FFF'
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    data: ['11-07', '11-08', '11-09', '11-10', '11-11', '11-12', '11-13'],
+                    axisLine: {
+                        lineStyle: { color: "#FFF" }
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    name: 'h',
+                    axisLine: {
+                        lineStyle: { color: "#FFF" }
+                    }
+                }
+            ],
+            series: [
+                {
+                    name: '焊接',
+                    type: 'bar',
+                    data: [98.33, 93.94, 83.05, 86.23, 0, 75.98, 42.8]
+                },
+                {
+                    name: '工作',
+                    type: 'bar',
+                    data: [425.27, 424.43, 349.49, 340.69, 49.40, 302.05, 145.14]
+                },
+            ]
+        };
+
+        optionWeeklyWeldingQuality = {
+            color: ["#0AF", "#EEE", '#F00'],
+            title: {
+                text: '一周焊接品质统计',
+                textStyle: {
+                    color: '#FFF'
+                },
+                x: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            legend: {
+                data: ['良好', '正常', '超规范'],
+                x: 'right',
+                textStyle: {
+                    color: '#FFF'
+                },
+                orient: 'vertical',
+                itemGap: 4,
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [
+                {
+
+                    type: 'category',
+                    data: ['11-07', '11-08', '11-09', '11-10', '11-11', '11-12', '11-13'],
+                    axisLine: {
+                        lineStyle: { color: "#FFF" }
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    axisLine: {
+                        lineStyle: { color: "#FFF" }
+                    }
+                }
+            ],
+            series: [
+                {
+                    name: '良好',
+                    type: 'bar',
+                    stack: '总产量',
+                    data: [120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name: '正常',
+                    type: 'bar',
+                    stack: '总产量',
+                    data: [220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name: '超规范',
+                    type: 'bar',
+                    stack: '总产量',
+                    data: [150, 232, 201, 154, 190, 330, 410]
+                },
+
+            ]
+        };
+
+        wireConsumingChart.setOption(optionWireConsuming, true);
+        realtimeDeviceStatusChart.setOption(optionRealtimeDeviceStatus, true);
+        weldingTimeSumChart.setOption(optionWeldingTimeSum, true);
+        workingStatusChart.setOption(optionWorkingStatus, true);
+        autoWeldingTimeChart.setOption(optionAutoWeldingTime, true);
+        weeklyWeldingQualityChart.setOption(optionWeeklyWeldingQuality, true);
+
+
+    </script>
+</body>
+
+</html>

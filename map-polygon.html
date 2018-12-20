@@ -80,7 +80,7 @@ var data = [
     {name: '蓬莱', value: 37},
     {name: '韶关', value: 38},
     {name: '嘉峪关', value: 38},
-    {name: '广州', value: 38},
+    {name: '广州', value: 500},
     {name: '延安', value: 38},
     {name: '太原', value: 39},
     {name: '清远', value: 39},
@@ -191,7 +191,7 @@ var data = [
     {name: '德州', value: 120},
     {name: '济宁', value: 120},
     {name: '荆州', value: 127},
-    {name: '宜昌', value: 130},
+    {name: '宜昌', value: 500},
     {name: '义乌', value: 132},
     {name: '丽水', value: 133},
     {name: '洛阳', value: 134},
@@ -456,7 +456,7 @@ option = {
     title: {
         text: '广汽本田能源管理系统',
         subtext: 'powered by 辉烁科技',
-        sublink: 'http://www.pm25.in',
+        //sublink: 'http://www.pm25.in',
         left: 'center',
         textStyle: {
             color: '#fff'
@@ -603,37 +603,37 @@ option = {
         }
     },
     series : [
+//        {
+//            name: 'pm2.5',
+//            type: 'scatter',
+//            coordinateSystem: 'bmap',
+//            data: convertData(data),
+//            symbolSize: function (val) {
+//                return val[2] / 10;
+//            },
+//            label: {
+//                normal: {
+//                    formatter: '{b}',
+//                    position: 'right',
+//                    show: false
+//                },
+//                emphasis: {
+//                   show: true
+//                }
+//            },
+//            itemStyle: {
+//                normal: {
+//                    color: '#ddb926'
+//                }
+//            }
+//        },
         {
-            name: 'pm2.5',
-            type: 'scatter',
-            coordinateSystem: 'bmap',
-            data: convertData(data),
-            symbolSize: function (val) {
-                return val[2] / 10;
-            },
-            label: {
-                normal: {
-                    formatter: '{b}',
-                    position: 'right',
-                    show: false
-                },
-                emphasis: {
-                    show: true
-                }
-            },
-            itemStyle: {
-                normal: {
-                    color: '#ddb926'
-                }
-            }
-        },
-        {
-            name: 'Top 5',
+            name: '工厂',
             type: 'effectScatter',
             coordinateSystem: 'bmap',
             data: convertData(data.sort(function (a, b) {
                 return b.value - a.value;
-            }).slice(0, 6)),
+            }).slice(0, 2)),
             symbolSize: function (val) {
                 return val[2] / 10;
             },
@@ -657,20 +657,6 @@ option = {
                 }
             },
             zlevel: 1
-        },
-        {
-            type: 'custom',
-            coordinateSystem: 'bmap',
-            renderItem: renderItem,
-            itemStyle: {
-                normal: {
-                    opacity: 0.5
-                }
-            },
-            animation: false,
-            silent: true,
-            data: [0],
-            z: -10
         }
     ]
 };;
