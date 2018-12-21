@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>电能报表</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="system/styles/igrX.css" />
+	<style type="text/css">
+		.reportDiv {
+			position: absolute;
+			top: 480px;
+			left: 2%;
+			right: 2%;
+			width: 1200px;
+			z-index: 0;
+		}
+
+		.plotcontainer {
+			position: absolute;
+			top: 50px;
+			width: 46%;
+			height: 325px;
+		}
+
+		.plottitle {
+			position: absolute;
+			width: 40%;
+		}
+
+		.background-plot {
+			width: 100%;
+			height: 380px;
+			top: 90px;
+			position: absolute;
+			background-color: Lavender;
+			z-index: 1;
+		}
+
+		.background-header {
+			position: absolute;
+			width: 100%;
+			background-color: white;
+			z-index: 1;
+		}
+
+		.legend {
+			position: relative;
+			margin-top: -375px;
+			margin-left: 20px;
+		}
+
+		#div1 {
+			display: inline-block;
+			zoom: 1;
+			*display: inline;
+			vertical-align: top;
+			left: inherit;
+		}
+
+		#div2 {
+			display: inline-block;
+			zoom: 1;
+			*display: inline;
+			width: 900px;
+			overflow-x: scroll;
+			vertical-align: top;
+			left: inherit;
+		}
+
+		td,
+		th {
+			height: 15px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class='background-header'>
+		<div id="idButtons" class="paragraph"></div>
+		<h1>电能消耗统计</h1>
+		<div id="idTimestamp" class="paragraph"></div>
+	</div>
+	<div class="background-plot" style="min-width:800px">
+		<h1 class='plottitle' style='left:5%;'>电能消耗比重</h1>
+		<div class='plotcontainer' data-igrx='{"attr":"cht","type":"pie",
+				"tag":[ "RTOEnergy", "TransportEnergy", "PCSEnergy", "WorkEnergy_1", "WorkEnergy_2", "WorkEnergy_3", "WorkEnergy_4", "WorkEnergy_5"] }'
+		 style="left: 2%;"></div>
+		<h1 class='plottitle' style='left:55%;'>总电能消耗</h1>
+		<div class='plotcontainer' data-igrx='{"attr":"cht","type":"bar",
+				"tag":[ "Energy Summary"] }' style="left: 52%;"></div>
+	</div>
+	<div class='reportDiv'>
+		<table width="60%">
+			<tr>
+				<td rowspan="2">分项</td>
+				<th rowspan="2">合计</th>
+				<th rowspan="2">RTO</th>
+				<th rowspan="2">输送</th>
+				<th rowspan="2">PCS</th>
+				<th colspan="5">工艺</th>
+			</tr>
+			<tr>
+				<th>#1柜</th>
+				<th>#2柜</th>
+				<th>#3柜</th>
+				<th>#4柜</th>
+				<th>#5柜</th>
+			</tr>
+			<tr>
+				<td>时间/单位</td>
+				<th>(千瓦时)</th>
+				<th>(千瓦时)</th>
+				<th>(千瓦时)</th>
+				<th>(千瓦时)</th>
+				<th>(千瓦时)</th>
+				<th>(千瓦时)</th>
+				<th>(千瓦时)</th>
+				<th>(千瓦时)</th>
+				<th>(千瓦时)</th>
+			</tr>
+			<tr>
+				<td data-igrx='{"attr":"log","tag":"app.currentTime"}'>Time</td>
+				<td data-igrx='{"attr":"log","tag":"Energy Summary"}'>#0.###0</td>
+				<td data-igrx='{"attr":"log","tag":"RTOEnergy"}'>#0.###0</td>
+				<td data-igrx='{"attr":"log","tag":"TransportEnergy"}'>#0.###0</td>
+				<td data-igrx='{"attr":"log","tag":"PCSEnergy"}'>#0.###0</td>
+				<td data-igrx='{"attr":"log","tag":"WorkEnergy_1"}'>#0.###0</td>
+				<td data-igrx='{"attr":"log","tag":"WorkEnergy_2"}'>#0.###0</td>
+				<td data-igrx='{"attr":"log","tag":"WorkEnergy_3"}'>#0.###0</td>
+				<td data-igrx='{"attr":"log","tag":"WorkEnergy_4"}'>#0.###0</td>
+				<td data-igrx='{"attr":"log","tag":"WorkEnergy_5"}'>#0.###0</td>
+			</tr>
+			<tr>
+				<td>小结</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>平均</td>
+				<td data-igrx='{"attr":"avg","tag":"Energy Summary"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"avg","tag":"RTOEnergy"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"avg","tag":"TransportEnergy"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"avg","tag":"PCSEnergy"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"avg","tag":"WorkEnergy_1"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"avg","tag":"WorkEnergy_2"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"avg","tag":"WorkEnergy_3"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"avg","tag":"WorkEnergy_4"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"avg","tag":"WorkEnergy_5"}'>#,##0.###0</td>
+			</tr>
+			<tr>
+				<td>总计</td>
+				<td data-igrx='{"attr":"sum","tag":"Energy Summary"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"sum","tag":"RTOEnergy"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"sum","tag":"TransportEnergy"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"sum","tag":"PCSEnergy"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"sum","tag":"WorkEnergy_1"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"sum","tag":"WorkEnergy_2"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"sum","tag":"WorkEnergy_3"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"sum","tag":"WorkEnergy_4"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"sum","tag":"WorkEnergy_5"}'>#,##0.###0</td>
+			</tr>
+			<tr>
+				<td>最大值</td>
+				<td data-igrx='{"attr":"max","tag":"Energy Summary"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"max","tag":"RTOEnergy"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"max","tag":"TransportEnergy"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"max","tag":"PCSEnergy"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"max","tag":"WorkEnergy_1"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"max","tag":"WorkEnergy_2"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"max","tag":"WorkEnergy_3"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"max","tag":"WorkEnergy_4"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"max","tag":"WorkEnergy_5"}'>#,##0.###0</td>
+			</tr>
+			<tr>
+				<td>最小值</td>
+				<td data-igrx='{"attr":"min","tag":"Energy Summary"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"min","tag":"RTOEnergy"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"min","tag":"TransportEnergy"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"min","tag":"PCSEnergy"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"min","tag":"WorkEnergy_1"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"min","tag":"WorkEnergy_2"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"min","tag":"WorkEnergy_3"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"min","tag":"WorkEnergy_4"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"min","tag":"WorkEnergy_5"}'>#,##0.###0</td>
+			</tr>
+		</table>
+	</div>
+	<div style="visibility:hidden; height:100px;"></div>
+</body>
+
+<script type="text/javascript" src="system/scripts/igrX.js"></script>
+<script type="text/javascript">
+	var rpt = igrx.report();
+</script>
+
+</html>
