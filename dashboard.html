@@ -11,178 +11,147 @@
 
 <body style="height: 100%">
     <div class="container-fluid" style="height: 100%">
-        <div class="row" style="height: 66.6%">
-            <div class="col-3" style="height: 100%">
-                <div id="wire-consuming" class="row bg-dark div-component" style="height: 50%">
-                </div>
-                <div id="realtime-device-status" class="row bg-dark div-component" style="height: 50%">
-                </div>
+        <div class="row" style="height: 50%">
+            <div class="col-3 bg-dark div-component" style="height: 100%">
+                <div id="cost-gauge" class="row" style="height: 85%"></div>
+                <dl class="row text-white" style="height: 15%">
+                    <dt class="col-sm-5 text-right">实际能耗</dt>
+                    <dd class="col-sm-7">50.445（万元）</dd>
+                    <dt class="col-sm-5 text-right">计划能耗</dt>
+                    <dd class="col-sm-7">100.00（万元）</dd>
+                </dl>
             </div>
-            <div id="device-status pre-scrollable" class="col-6 bg-dark div-component" style="height: 100%">
-                <div class="page-header">
-                    <h4 class="text-white m-auto text-center">设备状态
-                    </h4>
+            <div id="total-consume" class="col-6 bg-dark div-component" style="height: 100%">
+            </div>
+            <div id="cost-weight" class="col-3 bg-dark div-component" style="height: 100%">
+            </div>
+        </div>
+        <div class="row" style="height: 50%">
+            <div id="consume-trend" class="col-3 bg-dark div-component" style="height: 100%"></div>
+            <div id="realtime-environment" class="col-3 bg-dark div-component" style="height: 100%">
+                <div class="page-header" style="margin-top: 5px">
+                    <h5 class="text-white m-auto text-center">车间环境参数</h5>
                 </div>
                 <table class="table table-striped table-dark mt-2">
                     <thead>
                         <tr>
-                            <th scope="col">焊机编号</th>
-                            <th scope="col">所属工位</th>
-                            <th scope="col">状态</th>
-                            <th scope="col">A</th>
-                            <th scope="col">V</th>
-                            <th scope="col">报警代码</th>
+                            <th scope="col">监测点</th>
+                            <th scope="col">温度</th>
+                            <th scope="col">湿度</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th>3118</th>
-                            <td>成都翻转机</td>
-                            <td>焊接</td>
-                            <td>196</td>
-                            <td>20.4</td>
-                            <td>正常</td>
+                            <td>区域1</td>
+                            <td>22°C</td>
+                            <td>20.4%</td>
                         </tr>
                         <tr>
-                            <th>3103</th>
-                            <td>成都组焊平台1</td>
-                            <td>待机</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>正常</td>
+                            <td>区域2</td>
+                            <td>22°C</td>
+                            <td>20.4%</td>
                         </tr>
                         <tr>
-                            <th>3111</th>
-                            <td>成都组焊平台1</td>
-                            <td>关机</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>正常</td>
+                            <td>区域3</td>
+                            <td>22°C</td>
+                            <td>20.4%</td>
                         </tr>
                         <tr>
-                            <th>3114</th>
-                            <td>成都组焊平台1</td>
-                            <td>关机</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>正常</td>
+                            <td>区域4</td>
+                            <td>22°C</td>
+                            <td>20.4%</td>
                         </tr>
                         <tr>
-                            <th>53102</th>
-                            <td>成都组焊平台1</td>
-                            <td>待机</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>正常</td>
+                            <td>区域5</td>
+                            <td>22°C</td>
+                            <td>20.4%</td>
+                        </tr>
+                        <tr>
+                            <td>区域6</td>
+                            <td>22°C</td>
+                            <td>20.4%</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="col-3" style="height: 100%">
-                <div id="welding-time-sum" class="row bg-dark div-component" style="height: 50%">
-                </div>
-                <div id="latest-alert" class="row bg-dark div-component" style="height: 50%">
-                    <div class="col-12 pre-scrollable">
-                        <h5 class="text-white m-auto text-center">最新报警信息
-                        </h5>
-                        <dl class="dl-horizontal text-white">
-                            <dt>编号</dt>
-                            <dd>Welder09</dd>
-                            <dt>事件类型</dt>
-                            <dd>报警</dd>
-                            <dt>发生时间</dt>
-                            <dd>2018/11/13 12:05:13</dd>
-                            <dt>详情</dt>
-                            <dd>Err-10</dd>
-                        </dl>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="height: 33.3%">
-            <div id="working-status" class="col-3 bg-dark div-component" style="height: 100%"></div>
-            <div id="auto-welding-time" class="col-6 bg-dark div-component" style="height: 100%"></div>
-            <div id="weekly-welding-quality" class="col-3 bg-dark div-component" style="height: 100%"></div>
+            <div id="environment-trend" class="col-3 bg-dark div-component" style="height: 100%"></div>
+            <div id="realtime-suppressed-air" class="col-3 bg-dark div-component" style="height: 100%"></div>
         </div>
     </div>
     <script type="text/javascript" src="./scripts/jquery.slim.min.js"></script>
     <script type="text/javascript" src="./scripts/bootstrap.min.js"></script>
     <script type="text/javascript" src="./scripts/echarts.min.js"></script>
+    <script type="text/javascript" src="./scripts/dark.js"></script>
     <script type="text/javascript">
-        var domWireConsuming = document.getElementById("wire-consuming");
-        var domRealtimeDeviceStatus = document.getElementById("realtime-device-status");
-        var domDeviceStatus = document.getElementById("device-status");
-        var domWeldingTimeSum = document.getElementById("welding-time-sum");
-        var domLatestAlert = document.getElementById("latest-alert");
-        var domWorkingStatus = document.getElementById("working-status");
-        var domAutoWeldingTime = document.getElementById("auto-welding-time");
-        var domWeeklyWeldingQuality = document.getElementById("weekly-welding-quality");
-        var wireConsumingChart = echarts.init(domWireConsuming);
-        var realtimeDeviceStatusChart = echarts.init(domRealtimeDeviceStatus);
-        var weldingTimeSumChart = echarts.init(domWeldingTimeSum);
-        var workingStatusChart = echarts.init(domWorkingStatus);
-        var autoWeldingTimeChart = echarts.init(domAutoWeldingTime);
-        var weeklyWeldingQualityChart = echarts.init(domWeeklyWeldingQuality);
+        var domCostGauge = document.getElementById("cost-gauge");
+        var domCostWeight = document.getElementById("cost-weight");
+        var domTotalConsume = document.getElementById("total-consume");
+        var domConsumeTrend = document.getElementById("consume-trend");
+        var domEnvironmentTrend = document.getElementById("environment-trend");
+        var costGaugeChart = echarts.init(domCostGauge);
+        var costWeightChart = echarts.init(domCostWeight);
+        var totalConsumeChart = echarts.init(domTotalConsume);
+        var consumeTrendChart = echarts.init(domConsumeTrend);
+        var environmentTrendChart = echarts.init(domEnvironmentTrend);
         var app = {};
-        optionWireConsuming = null;
-        optionRealtimeDeviceStatus = null;
-        optionWeldingTimeSum = null;
-        optionWorkingStatus = null;
-        optionAutoWeldingTime = null;
-        optionWeeklyWeldingQuality = null;
-        optionWireConsuming = {
-            color: ['#FFF'],
-            title: {
-                text: '工位焊丝消耗（当天）',
-                textStyle: {
-                    color: '#FFF'          // 主标题文字颜色
-                },
-                x: 'center',
+        optionCostGauge = null;
+        optionCostWeight = null;
+        optionTotalConsume = null;
+        optionConsumeTrend = null;
+        optionEnvironmentTrend = null;
+        optionCostGauge = {
+            tooltip: {
+                formatter: "{a} <br/>{b} : {c}（万元）"
             },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
+            toolbox: {
+                feature: {
+                    restore: {},
+                    saveAsImage: {}
+                }
             },
-            xAxis: {
-                type: 'category',
-                data: ['成都翻转机', '1', '2', '成都组焊平台', '3', '4', '自动焊1', '5', '6'],
-                splitLine: { show: false },//去除网格线
-                axisLine: {
-                    lineStyle: {
-                        type: 'solid',
-                        color: '#fff',//左边线的颜色
-                        width: '2'//坐标线的宽度
-                    }
+            series: {
+                name: '当月能耗',
+                type: 'gauge',
+                min: 0,
+                max: 220,
+                detail: { formatter: '{value}（万元）' },
+                data: [{ value: 50.445, name: '当月总能耗' }],
+                axisLabel: {
+                    backgroundColor: 'auto',
+                    borderRadius: 2,
+                    color: '#eee',
+                    padding: 3,
+                    textShadowBlur: 2,
+                    textShadowOffsetX: 1,
+                    textShadowOffsetY: 1,
+                    textShadowColor: '#222'
                 },
-            },
-            yAxis: {
-                type: 'value',
-                name: 'kg',
-                axisLine: {
-                    lineStyle: {
-                        type: 'solid',
-                        color: '#fff',//左边线的颜色
-                        width: '2'//坐标线的宽度
-                    }
+                title: {
+                    fontWeight: 'bolder',
+                    fontSize: 20,
+                    color: '#FFF'
                 },
-            },
-            series: [{
-                data: [20.28, 7.97, 6.9, 3.55, 12.94, 60.33, 86.48, 87.95, 60.78],
-                type: 'bar',
-                label: {
-                    normal: {
-                        show: true,
-                        position: 'top'
-                    }
+                detail: {
+                    formatter: function (value) {
+                        value = (value + '').split('.');
+                        value.length < 2 && (value.push('00'));
+                        return ('00' + value[0]).slice(-2)
+                            + '.' + (value[1] + '00').slice(0, 2);
+                    },
+                    fontWeight: 'bolder',
+                    x: 'buttom',
+                    fontFamily: 'Arial',
+                    width: 100,
+                    color: '#eee',
+                    rich: {}
                 },
-            }]
+            }
+
         };
-        optionRealtimeDeviceStatus = {
-            color: ['#F00', '#FB0', '#F0B', '#0BF'],
+        optionCostWeight = {
+            color: ['#2FF', '#FF2'],
             title: {
-                text: '设备实时状态',
+                text: '本月能耗占比',
                 x: 'center',
                 textStyle: {
                     color: '#FFF'
@@ -195,26 +164,24 @@
             legend: {
                 orient: 'vertical',
                 left: 'left',
-                data: ['报警', '待机', '关机', '焊接'],
+                data: ['电能', '煤气'],
                 textStyle: {
                     color: '#FFF'
                 }
             },
             series: [
                 {
-                    name: '设备实时状态',
+                    name: '本月能耗占比',
                     type: 'pie',
                     radius: '55%',
                     center: ['50%', '60%'],
                     data: [
-                        { value: 0, name: '报警' },
-                        { value: 73, name: '待机' },
-                        { value: 10, name: '关机' },
-                        { value: 17, name: '焊接' }
+                        { value: 73, name: '电能' },
+                        { value: 17, name: '煤气' }
                     ],
                     label: {
                         normal: {
-                            show: false
+                            show: true
                         }
                     },
                     itemStyle: {
@@ -227,59 +194,119 @@
                 }
             ]
         };
-        optionWeldingTimeSum = {
-            color: ['#0F4'],
-            title: {
-                text: '工位实际焊接时间统计（当天）',
-                x: 'center',
-                textStyle: {
-                    color: '#FFF'
-                }
-            },
+        optionTotalConsume = {
+            color: ['#2FF', '#FF2'],
             grid: {
                 left: '3%',
                 right: '4%',
                 bottom: '3%',
                 containLabel: true
             },
-            xAxis: {
-                type: 'category',
-                data: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-
-                axisLine: {
-                    lineStyle: {
-                        type: 'solid',
-                        color: '#fff',//左边线的颜色
-                        width: '2'//坐标线的宽度
-                    }
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff',
-
+            title: {
+                text: '电能、天然气消耗统计（本周）',
+                x: 'center',
+                textStyle: {
+                    color: '#FFF'
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    crossStyle: {
+                        color: '#999'
+                    },
+                    label: {
+                        color: '#000'
                     }
                 }
             },
-            yAxis: {
-                type: 'value',
-                name: 'h',
+            toolbox: {
+                feature: {
+                    dataView: {
+                        show: true,
+                        readOnly: false
+                    },
+                    saveAsImage: {
+                        show: true
+                    }
+                }
+            },
+            legend: {
+                data: ['电能', '天然气'],
+                right: 50,
+                textStyle: {
+                    color: '#FFF'
+                }
+            },
+            xAxis: [{
+                type: 'category',
+                data: ['11-1', '11-2', '11-3', '11-4', '11-5', '11-6', '11-7'],
+                axisPointer: {
+                    type: 'shadow'
+                },
+                splitLine: {
+                    show: false
+                },
                 axisLine: {
                     lineStyle: {
                         type: 'solid',
-                        color: '#fff',//左边线的颜色
-                        width: '2'//坐标线的宽度
+                        color: '#fff', //左边线的颜色
+                        width: '2' //坐标线的宽度
+                    }
+                },
+            }],
+            yAxis: [{
+                type: 'value',
+                name: '电能',
+                min: 0,
+                max: 250,
+                interval: 50,
+                axisLabel: {
+                    formatter: '{value} kwh'
+                },
+                axisLine: {
+                    lineStyle: {
+                        type: 'solid',
+                        color: '#fff', //左边线的颜色
+                        width: '2' //坐标线的宽度
                     }
                 },
             },
+            {
+                type: 'value',
+                name: '天然气',
+                min: 0,
+                max: 25,
+                interval: 5,
+                axisLabel: {
+                    formatter: '{value} m^3'
+                },
+                axisLine: {
+                    lineStyle: {
+                        type: 'solid',
+                        color: '#fff', //左边线的颜色
+                        width: '2' //坐标线的宽度
+                    }
+                },
+            }],
             series: [{
-                data: [0.256442914, 0.580303614, 0.803028025, 0.432741997, 1.477036175, 0.673592618, 0.205770117, 1.224051194, 1.181442595, 1.278661225, 1.090559486, 0.80559786, 0.600158258, 0.329677023, 0.030159468, 0.391603009, 1.063214994, 0.745137201, 0.434081973, 0.841289353, 0.333733326, 0.848505977, 1.284532515, 0.163100024, 0.403295319, 0.236407997, 0.431374049, 0.028605493, 0.230274396, 0.038504706, 0.934052362, 1.484608218, 0.268561811, 0.061305429, 0.010894619, 0.622504791,],
-                type: 'bar'
-            }]
+                name: '电能',
+                type: 'bar',
+                data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6]
+            },
+            {
+                name: '天然气',
+                type: 'bar',
+                yAxisIndex: 1,
+                data: [2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3]
+            }
+            ]
         };
-        optionWorkingStatus = {
-            color: ['#F00', '#FB0', '#F0B', '#0BF'],
+        optionConsumeTrend = {
+            color: ['#F00', '#FB0', '#F0B'],
             title: {
-                text: '工位开动率看板',
+                text: '能耗趋势分析',
                 textStyle: {
                     color: '#FFF'
                 },
@@ -289,7 +316,7 @@
                 trigger: 'axis'
             },
             legend: {
-                data: ['自动焊1', '自动焊2', '自动焊3'],
+                data: ['本周', '上周', '去年同期'],
                 x: 'right',
                 orient: 'vertical',
                 itemGap: 4,
@@ -306,7 +333,7 @@
             xAxis: {
                 type: 'category',
                 boundaryGap: false,
-                data: ['11-07', '11-08', '11-09', '11-10', '11-11', '11-12', '11-13'],
+                data: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
                 axisLine: {
                     lineStyle: {
                         type: 'solid',
@@ -317,7 +344,7 @@
             },
             yAxis: {
                 type: 'value',
-                name: '%',
+                name: '万元',
                 axisLine: {
                     lineStyle: {
                         type: 'solid',
@@ -328,161 +355,345 @@
             },
             series: [
                 {
-                    name: '自动焊1',
+                    name: '本周',
                     type: 'line',
                     data: [48.92689211, 97.78401517, 1.420900046, 10.88950953, 20.40810534, 75.41297649, 36.83933608,]
                 },
                 {
-                    name: '自动焊2',
+                    name: '上周',
                     type: 'line',
                     data: [60.1484415, 31.30951703, 39.90961392, 12.38050457, 82.93044147, 59.6110995, 64.34730357,]
                 },
                 {
-                    name: '自动焊3',
+                    name: '去年同期',
                     type: 'line',
                     data: [85.18806373, 56.63471305, 8.021051806, 23.64457862, 98.71627184, 41.71414139, 42.31669372,]
                 },
             ]
         };
-        optionAutoWeldingTime = {
-            color: ["#0FF", "#EEE"],
-            title: {
-                text: '自动焊工序工作时间',
-                textStyle: {
-                    color: '#FFF'
+        optionEnvironmentTrend = {
+            baseOption: {
+                color: ['#299', '#992'],
+                timeline: {
+                    axisType: 'category',
+                    show: true,
+                    playInterval: 1000,
+                    label: {
+                        color: '#FFF'
+                    },
+                    lineStyle: {
+                        type: 'solid',
+                        color: '#fff', //左边线的颜色
+                        width: '2' //坐标线的宽度
+                    },
+                    controlStyle: {
+                        color: '#fff', //左边线的颜色
+                        borderColor: '#fff'
+                    },
+                    itemStyle: {
+                        color: '#fff'
+                    },
+                    data: ['区域1', '区域2', '区域3', '区域4', '区域5', '区域6']
                 },
-                x: 'center'
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-                }
-            },
-            legend: {
-                data: ['焊接', '工作'],
-                x: 'right',
-                textStyle: {
-                    color: '#FFF'
-                }
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: [
-                {
-                    type: 'category',
-                    data: ['11-07', '11-08', '11-09', '11-10', '11-11', '11-12', '11-13'],
-                    axisLine: {
-                        lineStyle: { color: "#FFF" }
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    top: '20%',
+                    bottom: '14%',
+                    containLabel: true
+                },
+                legend: {
+                    top: 10,
+                    right: 10,
+                    data: ['温度', '湿度'],
+                    textStyle: {
+                        color: '#FFF'
                     }
-                }
-            ],
-            yAxis: [
+                },
+                title: {
+                    text: '车间环境趋势',
+                    textStyle: {
+                        color: '#FFF'
+                    },
+                    x: 'center'
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                    axisLine: {
+                        lineStyle: {
+                            type: 'solid',
+                            color: '#fff', //左边线的颜色
+                            width: '2' //坐标线的宽度
+                        }
+                    },
+                },
+                yAxis: [{
+                    type: 'value',
+                    name: '温度',
+                    min: 15,
+                    max: 30,
+                    axisLabel: {
+                        formatter: '{value} °C'
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            type: 'solid',
+                            color: '#fff', //左边线的颜色
+                            width: '2' //坐标线的宽度
+                        }
+                    },
+                },
                 {
                     type: 'value',
-                    name: 'h',
+                    name: '湿度',
+                    axisLabel: {
+                        formatter: '{value} %'
+                    },
                     axisLine: {
-                        lineStyle: { color: "#FFF" }
-                    }
-                }
+                        lineStyle: {
+                            type: 'solid',
+                            color: '#fff', //左边线的颜色
+                            width: '2' //坐标线的宽度
+                        }
+                    },
+                }],
+            },
+            options: [
+                {
+                    series: [
+                        {
+                            name: '温度',
+                            type: 'line',
+                            data: [21, 21, 25, 23, 22, 23, 20],
+                            markPoint: {
+                                data: [
+                                    { type: 'max', name: '最大值' },
+                                    { type: 'min', name: '最小值' }
+                                ]
+                            },
+                            markLine: {
+                                data: [
+                                    { type: 'average', name: '平均值' }
+                                ]
+                            }
+                        },
+                        {
+                            name: '湿度',
+                            type: 'line',
+                            yAxisIndex: 1,
+                            data: [10, 20, 20, 50, 30, 20, 10],
+                            markPoint: {
+                                data: [
+                                    { type: 'max', name: '最大值' },
+                                    { type: 'min', name: '最小值' }
+                                ]
+                            },
+                            markLine: {
+                                data: [
+                                    { type: 'average', name: '平均值' }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    series: [
+                        {
+                            name: '温度',
+                            type: 'line',
+                            data: [21, 21, 25, 23, 21, 23, 20],
+                            markPoint: {
+                                data: [
+                                    { type: 'max', name: '最大值' },
+                                    { type: 'min', name: '最小值' }
+                                ]
+                            },
+                            markLine: {
+                                data: [
+                                    { type: 'average', name: '平均值' }
+                                ]
+                            }
+                        },
+                        {
+                            name: '湿度',
+                            type: 'line',
+                            yAxisIndex: 1,
+                            data: [10, 20, 20, 50, 30, 20, 10],
+                            markPoint: {
+                                data: [
+                                    { type: 'max', name: '最大值' },
+                                    { type: 'min', name: '最小值' }
+                                ]
+                            },
+                            markLine: {
+                                data: [
+                                    { type: 'average', name: '平均值' }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    series: [
+                        {
+                            name: '温度',
+                            type: 'line',
+                            data: [23, 21, 25, 23, 21, 23, 20],
+                            markPoint: {
+                                data: [
+                                    { type: 'max', name: '最大值' },
+                                    { type: 'min', name: '最小值' }
+                                ]
+                            },
+                            markLine: {
+                                data: [
+                                    { type: 'average', name: '平均值' }
+                                ]
+                            }
+                        },
+                        {
+                            name: '湿度',
+                            type: 'line',
+                            yAxisIndex: 1,
+                            data: [10, 20, 20, 50, 30, 20, 10],
+                            markPoint: {
+                                data: [
+                                    { type: 'max', name: '最大值' },
+                                    { type: 'min', name: '最小值' }
+                                ]
+                            },
+                            markLine: {
+                                data: [
+                                    { type: 'average', name: '平均值' }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    series: [
+                        {
+                            name: '温度',
+                            type: 'line',
+                            data: [21, 21, 25, 23, 22, 23, 20],
+                            markPoint: {
+                                data: [
+                                    { type: 'max', name: '最大值' },
+                                    { type: 'min', name: '最小值' }
+                                ]
+                            },
+                            markLine: {
+                                data: [
+                                    { type: 'average', name: '平均值' }
+                                ]
+                            }
+                        },
+                        {
+                            name: '湿度',
+                            type: 'line',
+                            yAxisIndex: 1,
+                            data: [10, 20, 20, 50, 30, 20, 10],
+                            markPoint: {
+                                data: [
+                                    { type: 'max', name: '最大值' },
+                                    { type: 'min', name: '最小值' }
+                                ]
+                            },
+                            markLine: {
+                                data: [
+                                    { type: 'average', name: '平均值' }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    series: [
+                        {
+                            name: '温度',
+                            type: 'line',
+                            data: [21, 21, 25, 23, 22, 23, 20],
+                            markPoint: {
+                                data: [
+                                    { type: 'max', name: '最大值' },
+                                    { type: 'min', name: '最小值' }
+                                ]
+                            },
+                            markLine: {
+                                data: [
+                                    { type: 'average', name: '平均值' }
+                                ]
+                            }
+                        },
+                        {
+                            name: '湿度',
+                            type: 'line',
+                            yAxisIndex: 1,
+                            data: [10, 20, 20, 50, 30, 20, 10],
+                            markPoint: {
+                                data: [
+                                    { type: 'max', name: '最大值' },
+                                    { type: 'min', name: '最小值' }
+                                ]
+                            },
+                            markLine: {
+                                data: [
+                                    { type: 'average', name: '平均值' }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    series: [
+                        {
+                            name: '温度',
+                            type: 'line',
+                            data: [21, 21, 25, 23, 22, 23, 20],
+                            markPoint: {
+                                data: [
+                                    { type: 'max', name: '最大值' },
+                                    { type: 'min', name: '最小值' }
+                                ]
+                            },
+                            markLine: {
+                                data: [
+                                    { type: 'average', name: '平均值' }
+                                ]
+                            }
+                        },
+                        {
+                            name: '湿度',
+                            type: 'line',
+                            yAxisIndex: 1,
+                            data: [10, 20, 20, 50, 30, 20, 10],
+                            markPoint: {
+                                data: [
+                                    { type: 'max', name: '最大值' },
+                                    { type: 'min', name: '最小值' }
+                                ]
+                            },
+                            markLine: {
+                                data: [
+                                    { type: 'average', name: '平均值' }
+                                ]
+                            }
+                        }
+                    ]
+                },
             ],
-            series: [
-                {
-                    name: '焊接',
-                    type: 'bar',
-                    data: [98.33, 93.94, 83.05, 86.23, 0, 75.98, 42.8]
-                },
-                {
-                    name: '工作',
-                    type: 'bar',
-                    data: [425.27, 424.43, 349.49, 340.69, 49.40, 302.05, 145.14]
-                },
-            ]
+
         };
-
-        optionWeeklyWeldingQuality = {
-            color: ["#0AF", "#EEE", '#F00'],
-            title: {
-                text: '一周焊接品质统计',
-                textStyle: {
-                    color: '#FFF'
-                },
-                x: 'center'
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                }
-            },
-            legend: {
-                data: ['良好', '正常', '超规范'],
-                x: 'right',
-                textStyle: {
-                    color: '#FFF'
-                },
-                orient: 'vertical',
-                itemGap: 4,
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: [
-                {
-
-                    type: 'category',
-                    data: ['11-07', '11-08', '11-09', '11-10', '11-11', '11-12', '11-13'],
-                    axisLine: {
-                        lineStyle: { color: "#FFF" }
-                    }
-                }
-            ],
-            yAxis: [
-                {
-                    type: 'value',
-                    axisLine: {
-                        lineStyle: { color: "#FFF" }
-                    }
-                }
-            ],
-            series: [
-                {
-                    name: '良好',
-                    type: 'bar',
-                    stack: '总产量',
-                    data: [120, 132, 101, 134, 90, 230, 210]
-                },
-                {
-                    name: '正常',
-                    type: 'bar',
-                    stack: '总产量',
-                    data: [220, 182, 191, 234, 290, 330, 310]
-                },
-                {
-                    name: '超规范',
-                    type: 'bar',
-                    stack: '总产量',
-                    data: [150, 232, 201, 154, 190, 330, 410]
-                },
-
-            ]
-        };
-
-        wireConsumingChart.setOption(optionWireConsuming, true);
-        realtimeDeviceStatusChart.setOption(optionRealtimeDeviceStatus, true);
-        weldingTimeSumChart.setOption(optionWeldingTimeSum, true);
-        workingStatusChart.setOption(optionWorkingStatus, true);
-        autoWeldingTimeChart.setOption(optionAutoWeldingTime, true);
-        weeklyWeldingQualityChart.setOption(optionWeeklyWeldingQuality, true);
-
-
+        costGaugeChart.setOption(optionCostGauge, true);
+        costWeightChart.setOption(optionCostWeight, true);
+        totalConsumeChart.setOption(optionTotalConsume, true);
+        consumeTrendChart.setOption(optionConsumeTrend, true);
+        environmentTrendChart.setOption(optionEnvironmentTrend, true);
     </script>
 </body>
 
