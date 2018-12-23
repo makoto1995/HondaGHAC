@@ -12,7 +12,7 @@
 <body style="height: 100%">
     <div class="container-fluid" style="height: 100%">
         <div class="row" style="height: 50%">
-            <div class="col-3 bg-dark div-component" style="height: 100%">
+            <div class="col-3 bg-darkblue div-component" style="height: 100%">
                 <div id="cost-gauge" class="row" style="height: 85%"></div>
                 <dl class="row text-white" style="height: 15%">
                     <dt class="col-sm-5 text-right">实际能耗</dt>
@@ -21,14 +21,14 @@
                     <dd class="col-sm-7">100.00（万元）</dd>
                 </dl>
             </div>
-            <div id="total-consume" class="col-6 bg-dark div-component" style="height: 100%">
+            <div id="total-consume" class="col-6 bg-darkblue div-component" style="height: 100%">
             </div>
-            <div id="cost-weight" class="col-3 bg-dark div-component" style="height: 100%">
+            <div id="cost-weight" class="col-3 bg-darkblue div-component" style="height: 100%">
             </div>
         </div>
         <div class="row" style="height: 50%">
-            <div id="consume-trend" class="col-3 bg-dark div-component" style="height: 100%"></div>
-            <div id="realtime-environment" class="col-3 bg-dark div-component" style="height: 100%">
+            <div id="consume-trend" class="col-3 bg-darkblue div-component" style="height: 100%"></div>
+            <div id="realtime-environment" class="col-3 bg-darkblue div-component" style="height: 100%">
                 <div class="page-header" style="margin-top: 5px">
                     <h5 class="text-white m-auto text-center">车间环境参数</h5>
                 </div>
@@ -74,8 +74,8 @@
                     </tbody>
                 </table>
             </div>
-            <div id="environment-trend" class="col-3 bg-dark div-component" style="height: 100%"></div>
-            <div id="realtime-suppressed-air" class="col-3 bg-dark div-component" style="height: 100%"></div>
+            <div id="environment-trend" class="col-3 bg-darkblue div-component" style="height: 100%"></div>
+            <div id="realtime-suppressed-air" class="col-3 bg-darkblue div-component" style="height: 100%"></div>
         </div>
     </div>
     <script type="text/javascript" src="./scripts/jquery.slim.min.js"></script>
@@ -83,22 +83,19 @@
     <script type="text/javascript" src="./scripts/echarts.min.js"></script>
     <script type="text/javascript" src="./scripts/dark.js"></script>
     <script type="text/javascript">
-        var domCostGauge = document.getElementById("cost-gauge");
-        var domCostWeight = document.getElementById("cost-weight");
-        var domTotalConsume = document.getElementById("total-consume");
-        var domConsumeTrend = document.getElementById("consume-trend");
-        var domEnvironmentTrend = document.getElementById("environment-trend");
-        var costGaugeChart = echarts.init(domCostGauge);
-        var costWeightChart = echarts.init(domCostWeight);
-        var totalConsumeChart = echarts.init(domTotalConsume);
-        var consumeTrendChart = echarts.init(domConsumeTrend);
-        var environmentTrendChart = echarts.init(domEnvironmentTrend);
+        var costGaugeChart = echarts.init(document.getElementById("cost-gauge"));
+        var costWeightChart = echarts.init(document.getElementById("cost-weight"));
+        var totalConsumeChart = echarts.init(document.getElementById("total-consume"));
+        var consumeTrendChart = echarts.init(document.getElementById("consume-trend"));
+        var environmentTrendChart = echarts.init(document.getElementById("environment-trend"));
+        var realtimeSuppressedAirChart = echarts.init(document.getElementById("realtime-suppressed-air"));
         var app = {};
         optionCostGauge = null;
         optionCostWeight = null;
         optionTotalConsume = null;
         optionConsumeTrend = null;
         optionEnvironmentTrend = null;
+        optionRealtimeSuppressedAir = null;
         optionCostGauge = {
             tooltip: {
                 formatter: "{a} <br/>{b} : {c}（万元）"
@@ -114,6 +111,7 @@
                 type: 'gauge',
                 min: 0,
                 max: 220,
+                radius: '90%',
                 detail: { formatter: '{value}（万元）' },
                 data: [{ value: 50.445, name: '当月总能耗' }],
                 axisLabel: {
@@ -128,7 +126,7 @@
                 },
                 title: {
                     fontWeight: 'bolder',
-                    fontSize: 20,
+                    fontSize: 15,
                     color: '#FFF'
                 },
                 detail: {
@@ -153,6 +151,7 @@
             title: {
                 text: '本月能耗占比',
                 x: 'center',
+                top: '2px',
                 textStyle: {
                     color: '#FFF'
                 }
@@ -205,6 +204,7 @@
             title: {
                 text: '电能、天然气消耗统计（本周）',
                 x: 'center',
+                top: '2px',
                 textStyle: {
                     color: '#FFF'
                 }
@@ -235,6 +235,7 @@
             legend: {
                 data: ['电能', '天然气'],
                 right: 50,
+                top: '2px',
                 textStyle: {
                     color: '#FFF'
                 }
@@ -310,7 +311,8 @@
                 textStyle: {
                     color: '#FFF'
                 },
-                x: 'center'
+                x: 'center',
+                top: '2px',
             },
             tooltip: {
                 trigger: 'axis'
@@ -320,6 +322,7 @@
                 x: 'right',
                 orient: 'vertical',
                 itemGap: 4,
+                top: '2px',
                 textStyle: {
                     color: '#FFF'
                 }
@@ -375,6 +378,8 @@
             baseOption: {
                 color: ['#299', '#992'],
                 timeline: {
+                    x: '5%',
+                    x2: '5%',
                     axisType: 'category',
                     show: true,
                     playInterval: 1000,
@@ -383,11 +388,11 @@
                     },
                     lineStyle: {
                         type: 'solid',
-                        color: '#fff', //左边线的颜色
-                        width: '2' //坐标线的宽度
+                        color: '#fff',
+                        width: '2'
                     },
                     controlStyle: {
-                        color: '#fff', //左边线的颜色
+                        color: '#fff',
                         borderColor: '#fff'
                     },
                     itemStyle: {
@@ -465,6 +470,9 @@
             },
             options: [
                 {
+                    title: {
+                        subtext: '区域1'
+                    },
                     series: [
                         {
                             name: '温度',
@@ -502,6 +510,9 @@
                     ]
                 },
                 {
+                    title: {
+                        subtext: '区域2'
+                    },
                     series: [
                         {
                             name: '温度',
@@ -539,6 +550,9 @@
                     ]
                 },
                 {
+                    title: {
+                        subtext: '区域3'
+                    },
                     series: [
                         {
                             name: '温度',
@@ -576,6 +590,9 @@
                     ]
                 },
                 {
+                    title: {
+                        subtext: '区域4'
+                    },
                     series: [
                         {
                             name: '温度',
@@ -613,6 +630,9 @@
                     ]
                 },
                 {
+                    title: {
+                        subtext: '区域5'
+                    },
                     series: [
                         {
                             name: '温度',
@@ -650,6 +670,9 @@
                     ]
                 },
                 {
+                    title: {
+                        subtext: '区域6'
+                    },
                     series: [
                         {
                             name: '温度',
@@ -689,11 +712,346 @@
             ],
 
         };
+        optionRealtimeSuppressedAir = {
+            tooltip: {
+                formatter: "{a} <br/>{c} {b}"
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    restore: { show: true },
+                    saveAsImage: { show: true }
+                }
+            },
+            series: [
+                {
+                    name: '管道压力',
+                    type: 'gauge',
+                    center: ['70%', '30%'],
+                    z: 3,
+                    min: 0,
+                    max: 2,
+                    splitNumber: 5,
+                    radius: '45%',
+                    axisLine: {            // 坐标轴线
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            width: 10
+                        }
+                    },
+                    axisTick: {            // 坐标轴小标记
+                        length: 15,        // 属性length控制线长
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            color: 'auto'
+                        }
+                    },
+                    splitLine: {           // 分隔线
+                        length: 20,         // 属性length控制线长
+                        lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                            color: 'auto'
+                        }
+                    },
+                    axisLabel: {
+                        backgroundColor: 'auto',
+                        borderRadius: 2,
+                        color: '#eee',
+                        padding: 3,
+                        textShadowBlur: 2,
+                        textShadowOffsetX: 1,
+                        textShadowOffsetY: 1,
+                        textShadowColor: '#222'
+                    },
+                    title: {
+                        // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        fontWeight: 'bolder',
+
+                        fontSize: 12,
+                        color: '#FFF',
+                        fontStyle: 'italic'
+                    },
+                    detail: {
+                        // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        formatter: function (value) {
+                            value = (value + '').split('.');
+                            value.length < 2 && (value.push('00'));
+                            return (value[0]).slice(-1)
+                                + '.' + (value[1] + '00').slice(0, 2);
+                        },
+                        fontWeight: 'bolder',
+                        borderRadius: 1,
+                        backgroundColor: '#444',
+                        borderColor: '#aaa',
+                        shadowBlur: 2,
+                        shadowColor: '#333',
+                        shadowOffsetX: 0,
+                        shadowOffsetY: 3,
+                        borderWidth: 1,
+                        textBorderColor: '#000',
+                        textBorderWidth: 1,
+                        textShadowBlur: 2,
+                        textShadowColor: '#fff',
+                        textShadowOffsetX: 0,
+                        textShadowOffsetY: 0,
+                        fontFamily: 'Arial',
+                        fontSize: 12,
+                        width: 30,
+                        color: '#eee',
+                        rich: {}
+                    },
+                    data: [{ value: 1, name: 'mPa' }]
+                },
+                {
+                    name: '瞬时流量',
+                    type: 'gauge',
+                    center: ['35%', '35%'],    // 默认全局居中
+                    radius: '40%',
+                    min: 0,
+                    max: 20,
+                    endAngle: 45,
+                    splitNumber: 5,
+                    axisLine: {            // 坐标轴线
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            width: 8
+                        }
+                    },
+                    axisTick: {            // 坐标轴小标记
+                        length: 12,        // 属性length控制线长
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            color: 'auto'
+                        }
+                    },
+                    splitLine: {           // 分隔线
+                        length: 20,         // 属性length控制线长
+                        lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                            color: 'auto'
+                        }
+                    },
+                    pointer: {
+                        width: 5
+                    },
+                    title: {
+                        offsetCenter: [0, '-30%'],       // x, y，单位px
+                        fontSize: 12,
+                        color: '#FFF',
+                    },
+                    detail: {
+                        // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        fontWeight: 'bolder',
+                        borderRadius: 1,
+                        backgroundColor: '#444',
+                        borderColor: '#aaa',
+                        shadowBlur: 2,
+                        shadowColor: '#333',
+                        shadowOffsetX: 0,
+                        shadowOffsetY: 3,
+                        borderWidth: 1,
+                        textBorderColor: '#000',
+                        textBorderWidth: 1,
+                        textShadowBlur: 2,
+                        textShadowColor: '#fff',
+                        textShadowOffsetX: 0,
+                        textShadowOffsetY: 0,
+                        fontFamily: 'Arial',
+                        fontSize: 12,
+                        width: 30,
+                        color: '#eee',
+                        rich: {}
+                    },
+                    data: [{ value: 1.5, name: 'm^3/s' }]
+                },
+                {
+                    name: '管道压力',
+                    type: 'gauge',
+                    center: ['70%', '80%'],
+                    z: 3,
+                    min: 0,
+                    max: 2,
+                    splitNumber: 5,
+                    radius: '45%',
+                    axisLine: {            // 坐标轴线
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            width: 10
+                        }
+                    },
+                    axisTick: {            // 坐标轴小标记
+                        length: 15,        // 属性length控制线长
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            color: 'auto'
+                        }
+                    },
+                    splitLine: {           // 分隔线
+                        length: 20,         // 属性length控制线长
+                        lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                            color: 'auto'
+                        }
+                    },
+                    axisLabel: {
+                        backgroundColor: 'auto',
+                        borderRadius: 2,
+                        color: '#eee',
+                        padding: 3,
+                        textShadowBlur: 2,
+                        textShadowOffsetX: 1,
+                        textShadowOffsetY: 1,
+                        textShadowColor: '#222'
+                    },
+                    title: {
+                        fontWeight: 'bolder',
+                        fontSize: 12,
+                        color: '#FFF',
+                        fontStyle: 'italic'
+                    },
+                    detail: {
+                        formatter: function (value) {
+                            value = (value + '').split('.');
+                            value.length < 2 && (value.push('00'));
+                            return (value[0]).slice(-1)
+                                + '.' + (value[1] + '00').slice(0, 2);
+                        },
+
+                        fontWeight: 'bolder',
+                        borderRadius: 1,
+                        backgroundColor: '#444',
+                        borderColor: '#aaa',
+                        shadowBlur: 2,
+                        shadowColor: '#333',
+                        shadowOffsetX: 0,
+                        shadowOffsetY: 3,
+                        borderWidth: 1,
+                        textBorderColor: '#000',
+                        textBorderWidth: 1,
+                        textShadowBlur: 2,
+                        textShadowColor: '#fff',
+                        textShadowOffsetX: 0,
+                        textShadowOffsetY: 0,
+                        fontFamily: 'Arial',
+                        fontSize: 12,
+                        width: 30,
+                        color: '#eee',
+                        rich: {}
+                    },
+                    data: [{ value: 1, name: 'mPa' }]
+                },
+                {
+                    name: '瞬时流量',
+                    type: 'gauge',
+                    center: ['35%', '85%'],    // 默认全局居中
+                    radius: '40%',
+                    min: 0,
+                    max: 20,
+                    endAngle: 45,
+                    splitNumber: 5,
+                    axisLine: {            // 坐标轴线
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            width: 8
+                        }
+                    },
+                    axisTick: {            // 坐标轴小标记
+                        length: 12,        // 属性length控制线长
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            color: 'auto'
+                        }
+                    },
+                    splitLine: {           // 分隔线
+                        length: 20,         // 属性length控制线长
+                        lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                            color: 'auto'
+                        }
+                    },
+                    pointer: {
+                        width: 5
+                    },
+                    title: {
+                        offsetCenter: [0, '-30%'],       // x, y，单位px
+
+                        fontSize: 12,
+                        color: '#FFF',
+                    },
+                    detail: {
+                        // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+
+                        fontWeight: 'bolder',
+                        borderRadius: 1,
+                        backgroundColor: '#444',
+                        borderColor: '#aaa',
+                        shadowBlur: 2,
+                        shadowColor: '#333',
+                        shadowOffsetX: 0,
+                        shadowOffsetY: 3,
+                        borderWidth: 1,
+                        textBorderColor: '#000',
+                        textBorderWidth: 1,
+                        textShadowBlur: 2,
+                        textShadowColor: '#fff',
+                        textShadowOffsetX: 0,
+                        textShadowOffsetY: 0,
+                        fontFamily: 'Arial',
+                        fontSize: 12,
+                        width: 30,
+                        color: '#eee',
+                        rich: {}
+                    },
+                    data: [{ value: 1.5, name: 'm^3/s' }]
+                },
+            ]
+        };
+
+        {
+            var _zr = realtimeSuppressedAirChart.getZr();
+            _zr.add(new echarts.graphic.Text({
+                style: {
+                    x: _zr.getWidth() * 0.7,
+                    y: _zr.getHeight() * 0.03,
+                    textFill: '#FFF',
+                    text: '管道1压力',
+                    textAlign: 'center',
+                    textFont: 'bold 15px verdana',
+                    fill: '#FFF'
+                }
+            }
+            ));
+            _zr.add(new echarts.graphic.Text({
+                style: {
+                    x: _zr.getWidth() * 0.35,
+                    y: _zr.getHeight() * 0.1,
+                    textFill: '#FFF',
+                    text: '管道1流量',
+                    textAlign: 'center',
+                    textFont: 'bold 15px verdana'
+                }
+            }
+            ));
+            _zr.add(new echarts.graphic.Text({
+                style: {
+                    x: _zr.getWidth() * 0.7,
+                    y: _zr.getHeight() * 0.53,
+                    textFill: '#FFF',
+                    text: '管道2压力',
+                    textAlign: 'center',
+                    textFont: 'bold 15px verdana'
+                }
+            }
+            ));
+            _zr.add(new echarts.graphic.Text({
+                style: {
+                    x: _zr.getWidth() * 0.35,
+                    y: _zr.getHeight() * 0.6,
+                    textFill: '#FFF',
+                    text: '管道2流量',
+                    textAlign: 'center',
+                    textFont: 'bold 15px verdana'
+                }
+            }
+            ));
+
+        }
+
         costGaugeChart.setOption(optionCostGauge, true);
         costWeightChart.setOption(optionCostWeight, true);
         totalConsumeChart.setOption(optionTotalConsume, true);
         consumeTrendChart.setOption(optionConsumeTrend, true);
         environmentTrendChart.setOption(optionEnvironmentTrend, true);
+        realtimeSuppressedAirChart.setOption(optionRealtimeSuppressedAir, true);
+
     </script>
 </body>
 
