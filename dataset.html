@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>参数设置</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./styles/bootstrap.min.css" rel="stylesheet">
+    <link href="./styles/bootstrap-monthpicker.css" rel="stylesheet">
+    <link href="./styles/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="./styles/all.css" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+        }
+    </style>
+    <link href="./styles/dataset.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+    <div class="container">
+        <div class="subhead mt-5">
+            <h2 class="subhead-heading">月度能耗计划设定</h2>
+        </div>
+        <form id="monthlyCostForm" class="need-validation" novalidate>
+            <div class="row my-2">
+                <label class="col-1 col-form-label" for="planMonth">月份</label>
+                <div class="input-group col-4">
+                    <input type="text" class="form-control" id="planMonth" placeholder="" value="" required>
+                </div>
+                <div class="invalid-feedback">
+                    Valid first name is required.
+                </div>
+            </div>
+            <div class="row my-2">
+                <label class="col-1 col-form-label" for="planValue">计划值</label>
+                <div class="input-group col-3">
+                    <input type="text" class="form-control" id="planValue" placeholder="" value="" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">元</span>
+                    </div>
+                </div>
+                <div class="invalid-feedback">
+                    Valid first name is required.
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit" onclick="submitPlan()">提交</button>
+        </form>
+        <div class="subhead subhead-spacious">
+            <h2 class="subhead-heading">电费设定</h2>
+        </div>
+        <form id="powerCostForm" class="need-validation" novalidate>
+            <div class="row my-2">
+                    <label class="col-1 col-form-label" for="highTimeFrom">峰时</label>
+                    <div class='input-group col-3' id='highTimeFromPicker'>
+                        <input id="highTimeFrom" class="form-control" type='text' class="form-control" />
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-clock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <label class="col-1 col-form-label text-center" for="highTimeTo">至</label>
+                    <div class='input-group col-3' id='highTimeToPicker'>
+                        <input id="highTimeTo" class="form-control" type='text' class="form-control" />
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-clock"></span>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </form>
+        <div class="subhead subhead-spacious">
+            <h2 class="subhead-heading">天然气费设定</h2>
+        </div>
+    </div>
+    <script type="text/javascript" src="./scripts/jquery.slim.min.js"></script>
+    <script type="text/javascript" src="./scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="./scripts/moment.js"></script>
+    <script type="text/javascript" src="./scripts/all.js"></script>
+    <script type="text/javascript" src="./scripts/bootstrap-monthpicker.js"></script>
+    <script type="text/javascript" src="./scripts/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript">
+        'use strict'
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation')
+
+            // Loop over them and prevent submission
+            Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        }, false);
+        $("#planMonth").bootstrapMonthpicker();
+        $('#highTimeFromPicker').datetimepicker({
+            format: 'LT'
+        });
+        $('#highTimeToPicker').datetimepicker({
+            format: 'LT'
+        });
+        var submitPlan = () => {
+
+        };
+
+
+    </script>
+</body>
+
+</html>

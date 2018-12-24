@@ -1,0 +1,20 @@
+.subhead {
+    border-bottom: 1px solid #e1e4e8;
+    display: flex;
+    flex-flow: row wrap;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+}
+.subhead-heading {
+    flex: 1 1 auto;
+    font-size: 24px;
+    font-weight: 400;
+}
+.subhead-spacious {
+    margin-top: 40px;
+}
+.btn-primary {
+    background-color: #28a745;
+    background-image: linear-gradient(-180deg,#34d058,#28a745 90%);
+    color: #fff;
+}
