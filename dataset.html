@@ -56,29 +56,122 @@
         </div>
         <form id="powerCostForm" class="need-validation" novalidate>
             <div class="row my-2">
-                    <label class="col-1 col-form-label" for="highTimeFrom">峰时</label>
-                    <div class='input-group col-3' id='highTimeFromPicker'>
-                        <input id="highTimeFrom" class="form-control" type='text' class="form-control" />
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fa fa-clock"></span>
-                            </div>
+                <label class="col-1 col-form-label" for="highTimeFrom">峰时</label>
+                <div class='input-group col-3' id='highTimeFromPicker'>
+                    <input id="highTimeFrom" class="form-control" type='text' class="form-control" />
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fa fa-clock"></span>
                         </div>
                     </div>
-                    <label class="col-1 col-form-label text-center" for="highTimeTo">至</label>
-                    <div class='input-group col-3' id='highTimeToPicker'>
-                        <input id="highTimeTo" class="form-control" type='text' class="form-control" />
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fa fa-clock"></span>
-                            </div>
+                </div>
+                <label class="col-1 col-form-label text-center" for="highTimeTo">至</label>
+                <div class='input-group col-3' id='highTimeToPicker'>
+                    <input id="highTimeTo" class="form-control" type='text' class="form-control" />
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fa fa-clock"></span>
                         </div>
                     </div>
+                </div>
             </div>
+            <div class="row my-2">
+                <label class="col-1 col-form-label" for="highTimeFrom">平时</label>
+                <div class='input-group col-3' id='normalTimeFromPicker'>
+                    <input id="normalTimeFrom" class="form-control" type='text' class="form-control" />
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fa fa-clock"></span>
+                        </div>
+                    </div>
+                </div>
+                <label class="col-1 col-form-label text-center" for="highTimeTo">至</label>
+                <div class='input-group col-3' id='normalTimeToPicker'>
+                    <input id="normalTimeTo" class="form-control" type='text' class="form-control" />
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fa fa-clock"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-2">
+                <label class="col-1 col-form-label" for="highTimeFrom">谷时</label>
+                <div class='input-group col-3' id='lowTimeFromPicker'>
+                    <input id="lowTimeFrom" class="form-control" type='text' class="form-control" />
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fa fa-clock"></span>
+                        </div>
+                    </div>
+                </div>
+                <label class="col-1 col-form-label text-center" for="highTimeTo">至</label>
+                <div class='input-group col-3' id='lowTimeToPicker'>
+                    <input id="lowTimeTo" class="form-control" type='text' class="form-control" />
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fa fa-clock"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-2">
+                <label class="col-1 col-form-label" for="highTimePowerCost">峰时电费</label>
+                <div class="input-group col-3">
+                    <input type="text" class="form-control" id="highTimePowerCost" placeholder="" value="" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">元/度</span>
+                    </div>
+                </div>
+                <div class="invalid-feedback">
+                    Valid first name is required.
+                </div>
+            </div>
+            <div class="row my-2">
+                <label class="col-1 col-form-label" for="normalTimePowerCost">平时电费</label>
+                <div class="input-group col-3">
+                    <input type="text" class="form-control" id="normalTimePowerCost" placeholder="" value="" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">元/度</span>
+                    </div>
+                </div>
+                <div class="invalid-feedback">
+                    Valid first name is required.
+                </div>
+            </div>
+            <div class="row my-2">
+                <label class="col-1 col-form-label" for="lowTimePowerCost">谷时电费</label>
+                <div class="input-group col-3">
+                    <input type="text" class="form-control" id="lowTimePowerCost" placeholder="" value="" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">元/度</span>
+                    </div>
+                </div>
+                <div class="invalid-feedback">
+                    Valid first name is required.
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit" onclick="submitPowerCost()">提交</button>
         </form>
         <div class="subhead subhead-spacious">
             <h2 class="subhead-heading">天然气费设定</h2>
         </div>
+        <form id="lngCostForm" class="need-validation" novalidate>
+            <div class="row my-2">
+                <label class="col-2 col-form-label" for="lowTimePowerCost">天然气单价</label>
+                <div class="input-group col-3">
+                    <input type="text" class="form-control" id="lowTimePowerCost" placeholder="" value="" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">元/立方米</span>
+                    </div>
+                </div>
+                <div class="invalid-feedback">
+                    Valid first name is required.
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit" onclick="submitLNGCost()">提交</button>
+        </form>
+        <hr class="my-5"></hr>
     </div>
     <script type="text/javascript" src="./scripts/jquery.slim.min.js"></script>
     <script type="text/javascript" src="./scripts/bootstrap.js"></script>
@@ -91,7 +184,6 @@
         window.addEventListener('load', function () {
             // Fetch all the forms we want to apply custom Bootstrap validation styles to
             var forms = document.getElementsByClassName('needs-validation')
-
             // Loop over them and prevent submission
             Array.prototype.filter.call(forms, function (form) {
                 form.addEventListener('submit', function (event) {
@@ -111,9 +203,13 @@
             format: 'LT'
         });
         var submitPlan = () => {
+        };
+        var submitPowerCost = () => {
 
         };
+        var submitLNGCost = () => {
 
+        };
 
     </script>
 </body>
