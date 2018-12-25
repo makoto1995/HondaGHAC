@@ -28,7 +28,7 @@
         </div>
         <div class="row" style="height: 50%">
             <div id="consume-trend" class="col-3 bg-darkblue div-component" style="height: 100%"></div>
-            <div id="realtime-environment" class="col-3 bg-darkblue div-component" style="height: 100%">
+            <div id="realtime-environment" class="col-3 bg-darkblue div-component pre-scrollable" style="height: 100%">
                 <div class="page-header" style="margin-top: 5px">
                     <h5 class="text-white m-auto text-center">车间环境参数</h5>
                 </div>
@@ -111,7 +111,7 @@
                 type: 'gauge',
                 min: 0,
                 max: 220,
-                radius: '90%',
+                radius: '95%',
                 detail: { formatter: '{value}（万元）' },
                 data: [{ value: 50.445, name: '当月总能耗' }],
                 axisLabel: {
@@ -172,7 +172,7 @@
                 {
                     name: '本月能耗占比',
                     type: 'pie',
-                    radius: '55%',
+                    radius: '80%',
                     center: ['50%', '60%'],
                     data: [
                         { value: 73, name: '电能' },
