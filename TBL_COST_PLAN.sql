@@ -1,0 +1,16 @@
+USE [HondaGHAC]
+GO
+
+/****** Object:  Table [dbo].[TBL_COST_PLAN]    Script Date: 2018/12/29 16:56:56 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[TBL_COST_PLAN](
+	[MONTH_STAMP] [varchar](50) NOT NULL,
+	[VALUE] [real] NULL
+) ON [PRIMARY]
+GO
+

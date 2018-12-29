@@ -1,0 +1,24 @@
+USE [HondaGHAC]
+GO
+
+/****** Object:  Table [dbo].[TBL_TIME_PARTATION]    Script Date: 2018/12/29 16:57:17 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[TBL_TIME_PARTATION](
+	[NORMAL_TIME_1_FROM] [time](7) NULL,
+	[NORMAL_TIME_1_TO] [time](7) NULL,
+	[HIGH_TIME_1_FROM] [time](7) NULL,
+	[HIGH_TIME_1_TO] [time](7) NULL,
+	[NORMAL_TIME_2_FROM] [time](7) NULL,
+	[NORMAL_TIME_2_TO] [time](7) NULL,
+	[HIGH_TIME_2_FROM] [time](7) NULL,
+	[HIGH_TIME_2_TO] [time](7) NULL,
+	[LOW_TIME_FROM] [time](7) NULL,
+	[LOW_TIME_TO] [time](7) NULL
+) ON [PRIMARY]
+GO
+
