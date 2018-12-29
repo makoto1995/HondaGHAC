@@ -39,7 +39,8 @@ var horizontalReportData = {
 	'WorkEnergy_2': 38323,
 	'WorkEnergy_3': 30333,
 	'WorkEnergy_4': 4563,
-	'WorkEnergy_5': 197177
+	'WorkEnergy_5': 197177,
+	'IlluminationEnergy': 1971
 };
 
 var energySum = 0;
@@ -50,7 +51,7 @@ for (var i in horizontalReportData) {
 	energySum += data;
 }
 
-setTag('Energy Summary', energySum);
+setTag('EnergySummary', energySum);
 
 var dummylist = {
 	'dummyText': 'KWH Per Day'

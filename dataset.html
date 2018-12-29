@@ -239,8 +239,8 @@
     <script type="text/javascript" src="./scripts/bootstrap.js"></script>
     <script type="text/javascript" src="./scripts/moment.js"></script>
     <script type="text/javascript" src="./scripts/all.js"></script>
-    <script type="text/javascript" src="system/scripts/igrX2.js"></script>
     <script type="text/javascript" src="./scripts/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="system/scripts/igrX2.js"></script>
     <script type="text/javascript">
         'use strict'
         window.addEventListener('load', function () {
@@ -293,13 +293,20 @@
         var submitPlan = () => {
         };
         var submitPowerCost = () => {
-            var highTimeFrom = $('#highTimeFromPicker').text();
-            var highTimeTo = $('#highTimeToPicker').text();
-            var normalTimeFrom = $('#normalTimeFromPicker').text();
-            var normalTimeTo = $('#normalTimeToPicker').text();
+            var normalTime1From = $('#normalTime1FromPicker').text();
+            var normalTime1To = $('#normalTime1ToPicker').text();
+            var highTime1From = $('#highTime1FromPicker').text();
+            var highTime1To = $('#highTime1ToPicker').text();
+            var normalTime2From = $('#normalTime2FromPicker').text();
+            var normalTime2To = $('#normalTime2ToPicker').text();
+            var highTime2From = $('#highTime2FromPicker').text();
+            var highTime2To = $('#highTime2ToPicker').text();
             var lowTimeFrom = $('#lowTimeFromPicker').text();
             var lowTimeTo = $('#lowTimeToPicker').text();
-            if (!(highTimeTo === normalTimeFrom && normalTimeTo === lowTimeFrom && lowTimeTo === highTimeFrom)) {
+            if (!(lowTimeTo === normalTime1From && normalTime1To === highTime1From && highTime1To === normalTime2From
+                && normalTime2To === highTime2From && highTime2To === lowTimeFrom) &&
+                (!(normalTime1From === normalTime1To) && !(normalTime2From === normalTime2To) && !(highTime1From === highTime1To)
+                    && !(highTime2From === highTime2To) && !(lowTimeFrom === lowTimeTo))) {
                 return;
             }
         };

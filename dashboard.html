@@ -28,7 +28,7 @@
         </div>
         <div class="row" style="height: 50%">
             <div id="consume-trend" class="col-3 bg-darkblue div-component" style="height: 100%"></div>
-            <div id="realtime-environment" class="col-3 bg-darkblue div-component pre-scrollable" style="height: 100%">
+            <div id="realtime-environment" class="col-3 bg-darkblue div-component pre-scrollable" style="height: 100%; max-height: 75vh">
                 <div class="page-header" style="margin-top: 5px">
                     <h5 class="text-white m-auto text-center">车间环境参数</h5>
                 </div>
@@ -173,7 +173,7 @@
                     name: '本月能耗占比',
                     type: 'pie',
                     radius: '80%',
-                    center: ['50%', '60%'],
+                    center: ['50%', '50%'],
                     data: [
                         { value: 73, name: '电能' },
                         { value: 17, name: '煤气' }
@@ -456,6 +456,8 @@
                 {
                     type: 'value',
                     name: '湿度',
+                    min: 10,
+                    max: 80,
                     axisLabel: {
                         formatter: '{value} %'
                     },

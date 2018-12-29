@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<title>电能报表</title>
@@ -7,11 +8,10 @@
 	<link rel="stylesheet" type="text/css" href="system/styles/igrX.css" />
 	<style type="text/css">
 		.reportDiv {
-			position: absolute;
+			position: relative;
 			top: 480px;
-			left: 2%;
-			right: 2%;
-			width: 1200px;
+			margin: auto;
+			width: auto;
 			z-index: 0;
 		}
 
@@ -83,14 +83,14 @@
 	<div class="background-plot" style="min-width:800px">
 		<h1 class='plottitle' style='left:5%;'>电能消耗比重</h1>
 		<div class='plotcontainer' data-igrx='{"attr":"cht","type":"pie",
-				"tag":[ "RTOEnergy", "TransportEnergy", "PCSEnergy", "WorkEnergy_1", "WorkEnergy_2", "WorkEnergy_3", "WorkEnergy_4", "WorkEnergy_5"] }'
+				"tag":[ "RTOEnergy", "TransportEnergy", "PCSEnergy", "WorkEnergy_1", "WorkEnergy_2", "WorkEnergy_3", "WorkEnergy_4", "WorkEnergy_5", "IlluminationEnergy"] }'
 		 style="left: 2%;"></div>
 		<h1 class='plottitle' style='left:55%;'>总电能消耗</h1>
 		<div class='plotcontainer' data-igrx='{"attr":"cht","type":"bar",
-				"tag":[ "Energy Summary"] }' style="left: 52%;"></div>
+				"tag":[ "EnergySummary"] }' style="left: 52%;"></div>
 	</div>
 	<div class='reportDiv'>
-		<table width="60%">
+		<table width="80%">
 			<tr>
 				<td rowspan="2">分项</td>
 				<th rowspan="2">合计</th>
@@ -98,6 +98,7 @@
 				<th rowspan="2">输送</th>
 				<th rowspan="2">PCS</th>
 				<th colspan="5">工艺</th>
+				<th rowspan="2">照明</th>
 			</tr>
 			<tr>
 				<th>#1柜</th>
@@ -117,10 +118,11 @@
 				<th>(千瓦时)</th>
 				<th>(千瓦时)</th>
 				<th>(千瓦时)</th>
+				<th>(千瓦时)</th>
 			</tr>
 			<tr>
 				<td data-igrx='{"attr":"log","tag":"app.currentTime"}'>Time</td>
-				<td data-igrx='{"attr":"log","tag":"Energy Summary"}'>#0.###0</td>
+				<td data-igrx='{"attr":"log","tag":"EnergySummary"}'>#0.###0</td>
 				<td data-igrx='{"attr":"log","tag":"RTOEnergy"}'>#0.###0</td>
 				<td data-igrx='{"attr":"log","tag":"TransportEnergy"}'>#0.###0</td>
 				<td data-igrx='{"attr":"log","tag":"PCSEnergy"}'>#0.###0</td>
@@ -129,6 +131,7 @@
 				<td data-igrx='{"attr":"log","tag":"WorkEnergy_3"}'>#0.###0</td>
 				<td data-igrx='{"attr":"log","tag":"WorkEnergy_4"}'>#0.###0</td>
 				<td data-igrx='{"attr":"log","tag":"WorkEnergy_5"}'>#0.###0</td>
+				<td data-igrx='{"attr":"log","tag":"IlluminationEnergy"}'>#0.###0</td>
 			</tr>
 			<tr>
 				<td>小结</td>
@@ -141,10 +144,11 @@
 				<td></td>
 				<td></td>
 				<td></td>
+				<td></td>
 			</tr>
 			<tr>
 				<td>平均</td>
-				<td data-igrx='{"attr":"avg","tag":"Energy Summary"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"avg","tag":"EnergySummary"}'>#,##0.###0</td>
 				<td data-igrx='{"attr":"avg","tag":"RTOEnergy"}'>#,##0.###0</td>
 				<td data-igrx='{"attr":"avg","tag":"TransportEnergy"}'>#,##0.###0</td>
 				<td data-igrx='{"attr":"avg","tag":"PCSEnergy"}'>#,##0.###0</td>
@@ -153,10 +157,11 @@
 				<td data-igrx='{"attr":"avg","tag":"WorkEnergy_3"}'>#,##0.###0</td>
 				<td data-igrx='{"attr":"avg","tag":"WorkEnergy_4"}'>#,##0.###0</td>
 				<td data-igrx='{"attr":"avg","tag":"WorkEnergy_5"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"avg","tag":"IlluminationEnergy"}'>#,##0.###0</td>
 			</tr>
 			<tr>
 				<td>总计</td>
-				<td data-igrx='{"attr":"sum","tag":"Energy Summary"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"sum","tag":"EnergySummary"}'>#,##0.###0</td>
 				<td data-igrx='{"attr":"sum","tag":"RTOEnergy"}'>#,##0.###0</td>
 				<td data-igrx='{"attr":"sum","tag":"TransportEnergy"}'>#,##0.###0</td>
 				<td data-igrx='{"attr":"sum","tag":"PCSEnergy"}'>#,##0.###0</td>
@@ -165,10 +170,11 @@
 				<td data-igrx='{"attr":"sum","tag":"WorkEnergy_3"}'>#,##0.###0</td>
 				<td data-igrx='{"attr":"sum","tag":"WorkEnergy_4"}'>#,##0.###0</td>
 				<td data-igrx='{"attr":"sum","tag":"WorkEnergy_5"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"sum","tag":"IlluminationEnergy"}'>#,##0.###0</td>
 			</tr>
 			<tr>
 				<td>最大值</td>
-				<td data-igrx='{"attr":"max","tag":"Energy Summary"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"max","tag":"EnergySummary"}'>#,##0.###0</td>
 				<td data-igrx='{"attr":"max","tag":"RTOEnergy"}'>#,##0.###0</td>
 				<td data-igrx='{"attr":"max","tag":"TransportEnergy"}'>#,##0.###0</td>
 				<td data-igrx='{"attr":"max","tag":"PCSEnergy"}'>#,##0.###0</td>
@@ -177,10 +183,11 @@
 				<td data-igrx='{"attr":"max","tag":"WorkEnergy_3"}'>#,##0.###0</td>
 				<td data-igrx='{"attr":"max","tag":"WorkEnergy_4"}'>#,##0.###0</td>
 				<td data-igrx='{"attr":"max","tag":"WorkEnergy_5"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"max","tag":"IlluminationEnergy"}'>#,##0.###0</td>
 			</tr>
 			<tr>
 				<td>最小值</td>
-				<td data-igrx='{"attr":"min","tag":"Energy Summary"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"min","tag":"EnergySummary"}'>#,##0.###0</td>
 				<td data-igrx='{"attr":"min","tag":"RTOEnergy"}'>#,##0.###0</td>
 				<td data-igrx='{"attr":"min","tag":"TransportEnergy"}'>#,##0.###0</td>
 				<td data-igrx='{"attr":"min","tag":"PCSEnergy"}'>#,##0.###0</td>
@@ -189,6 +196,7 @@
 				<td data-igrx='{"attr":"min","tag":"WorkEnergy_3"}'>#,##0.###0</td>
 				<td data-igrx='{"attr":"min","tag":"WorkEnergy_4"}'>#,##0.###0</td>
 				<td data-igrx='{"attr":"min","tag":"WorkEnergy_5"}'>#,##0.###0</td>
+				<td data-igrx='{"attr":"min","tag":"IlluminationEnergy"}'>#,##0.###0</td>
 			</tr>
 		</table>
 	</div>
